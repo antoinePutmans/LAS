@@ -1,6 +1,6 @@
 CFLAGS=-std=c11 -pedantic -Wall -Wvla -Werror -D_DEFAULT_SOURCE
 
-ALL= ex1 ex2
+ALL= ex1 ex2 ex3
 
 all: $(ALL)
 
@@ -15,6 +15,13 @@ ex2: ex2.o utils_v2.o
 
 ex2.o: ex2.c utils_v2.h
 	gcc $(CFLAGS) -c ex2.c
+
+ex3: ex3.o utils_v2.o
+	gcc $(CFLAGS) -o ex3 ex3.o utils_v2.o
+
+ex3.o: ex3.c utils_v2.h
+	gcc $(CFLAGS) -c ex3.c
+
 
 utils_v2.o: utils_v2.c utils_v2.h
 	gcc $(CFLAGS) -c utils_v2.c

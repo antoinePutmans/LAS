@@ -25,11 +25,11 @@ int main(){
 
     printf("[%d] Hello, I am TIMER! ;)\n", getpid());
     struct sigaction action = {0};
-  action.sa_handler = sig_handler;
-  ssigfillset(&action.sa_mask);
-  action.sa_flags = 0;
+    action.sa_handler = sig_handler;
+    ssigfillset(&action.sa_mask);
+    action.sa_flags = 0;
     for (int i = 1; i<=NB_SIGNAUX; i++){ 
-        if (sigaction(i,sig_handler, NULL) != 0){
+        if (sigaction(i,&action, NULL) != 0){
             printf("Signal %d (%s) non capture\n", i, strsignal(i));
         }
     }
